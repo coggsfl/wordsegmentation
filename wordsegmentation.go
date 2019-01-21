@@ -32,7 +32,7 @@ func Segment(corp Corpus, text string) []string {
 }
 
 // Score a word in the context of the previous word.
-func score(current, previous string) float64 {
+func Score(current, previous string) float64 {
 	if help.Length(previous) == 0 {
 		unigramScore := corpus.Unigrams().ScoreForWord(current)
 		if unigramScore > 0 {
