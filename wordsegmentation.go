@@ -55,7 +55,7 @@ func Score(current, previous string) float64 {
 			}
 		}
 
-		return score(current, "")
+		return Score(current, "")
 	}
 }
 
