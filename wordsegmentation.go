@@ -68,7 +68,7 @@ func search(text, prev string) (ar m.Arrangement) {
 	max := -10000000.0
 
 	// Find the best candidate by finding the best arrangement rating
-	for a := range findCandidates(text, prev) {
+	for a := range FindCandidates(text, prev) {
 		if a.Rating > max {
 			max = a.Rating
 			ar = a
@@ -79,7 +79,7 @@ func search(text, prev string) (ar m.Arrangement) {
 }
 
 // Find candidates for a given text and an optional previous chunk of letters.
-func findCandidates(text, prev string) <-chan m.Arrangement {
+func FindCandidates(text, prev string) <-chan m.Arrangement {
 	ch := make(chan m.Arrangement)
 
 	go func() {
