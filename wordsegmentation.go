@@ -51,7 +51,7 @@ func Score(current, previous string) float64 {
 				// Conditional probability of the word given the previous
 				// word. The technical name is 'stupid backoff' and it's
 				// not a probability distribution
-				return bigramScore / corpus.Total() / score(previous, "<s>")
+				return bigramScore / corpus.Total() / Score(previous, "<s>")
 			}
 		}
 
@@ -84,7 +84,7 @@ func findCandidates(text, prev string) <-chan m.Arrangement {
 
 	go func() {
 		for p := range divide(text, 24) {
-			prefixScore := math.Log10(score(p.Prefix, prev))
+			prefixScore := math.Log10(Score(p.Prefix, prev))
 			arrangement := candidates.ForPossibility(p)
 			if len(arrangement.Words) == 0 {
 				arrangement = search(p.Suffix, p.Prefix)
